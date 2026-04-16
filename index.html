@@ -221,7 +221,7 @@ nav.scrolled{padding:10px 40px;box-shadow:0 10px 40px rgba(0,0,0,.3)}
    SKILLS RADAR
    ═══════════════════════════════════════════ */
 .radar-container{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap}
-.radar-svg{width:380px;height:380px}
+.radar-svg{width:380px;height:380px;overflow:visible}
 .radar-labels{display:flex;flex-direction:column;gap:16px}
 .radar-label{display:flex;align-items:center;gap:12px;font-size:.95rem}
 .radar-dot{width:12px;height:12px;border-radius:50%;background:var(--cyan)}
@@ -790,10 +790,10 @@ footer .footer-name{color:var(--cyan);font-weight:600}
       <circle cx="78" cy="132" r="5" fill="var(--cyan)"/>
       <!-- Labels -->
       <text x="200" y="28" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="600">Construction Mgmt</text>
-      <text x="350" y="118" text-anchor="start" fill="var(--text)" font-size="12" font-weight="600">Utility Infra</text>
-      <text x="345" y="288" text-anchor="start" fill="var(--text)" font-size="12" font-weight="600">Software Dev</text>
-      <text x="55" y="288" text-anchor="end" fill="var(--text)" font-size="12" font-weight="600">AI / Automation</text>
-      <text x="55" y="118" text-anchor="end" fill="var(--text)" font-size="12" font-weight="600">Fed Contracting</text>
+      <text x="342" y="112" text-anchor="start" fill="var(--text)" font-size="12" font-weight="600"><tspan x="342" dy="0">Utility</tspan><tspan x="342" dy="15">Infrastructure</tspan></text>
+      <text x="342" y="282" text-anchor="start" fill="var(--text)" font-size="12" font-weight="600">Software Dev</text>
+      <text x="58" y="282" text-anchor="end" fill="var(--text)" font-size="12" font-weight="600"><tspan x="58" dy="0">AI &amp;</tspan><tspan x="58" dy="15">Automation</tspan></text>
+      <text x="58" y="105" text-anchor="end" fill="var(--text)" font-size="12" font-weight="600"><tspan x="58" dy="0">Federal</tspan><tspan x="58" dy="15">Contracting</tspan></text>
     </svg>
     <div class="radar-labels">
       <div class="radar-label"><div class="radar-dot"></div>Construction Management — 95%</div>
@@ -821,11 +821,6 @@ footer .footer-name{color:var(--cyan);font-weight:600}
       <i class="fab fa-linkedin"></i>
       <div class="cc-title">LinkedIn</div>
       <div class="cc-val">linkedin.com/in/bradygay</div>
-    </a>
-    <a class="contact-card reveal" href="https://github.com/vladigan" target="_blank">
-      <i class="fab fa-github"></i>
-      <div class="cc-title">GitHub</div>
-      <div class="cc-val">github.com/vladigan</div>
     </a>
     <a class="contact-card reveal" href="tel:+17167718112">
       <i class="fas fa-phone"></i>
