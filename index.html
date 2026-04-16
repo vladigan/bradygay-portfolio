@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brady Gay | Civil PE &amp; Construction PM</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1b2a;
+      --slate:  #1b2d42;
+      --mid:    #243447;
+      --accent: #4a9eed;
+      --accent2: #2dd4bf;
+      --text:   #e2e8f0;
+      --muted:  #94a3b8;
+      --card:   #1e2f45;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(13,27,42,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(74,158,237,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .9rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 60%, #0e2236 100%);
+      text-align: center; padding: 80px 1.5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(74,158,237,0.08) 0%, transparent 70%);
+    }
+    .hero-inner { position: relative; max-width: 780px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(74,158,237,0.12);
+      border: 1px solid rgba(74,158,237,0.3);
+      color: var(--accent);
+      font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+      padding: .35rem 1rem; border-radius: 99px; margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .6rem;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--accent2); font-weight: 500; margin-bottom: 1.4rem;
+      letter-spacing: .02em;
+    }
+    .hero-contact {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem;
+      margin-bottom: 2.4rem;
+    }
+    .hero-contact a {
+      color: var(--muted); text-decoration: none; font-size: .9rem;
+      display: flex; align-items: center; gap: .4rem;
+      transition: color .2s;
+    }
+    .hero-contact a:hover { color: var(--accent); }
+    .hero-cta {
+      display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      padding: .7rem 1.8rem; border-radius: 8px; font-size: .95rem;
+      font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 4px 20px rgba(74,158,237,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 28px rgba(74,158,237,0.5); }
+    .btn-outline {
+      border: 1.5px solid rgba(74,158,237,0.45); color: var(--accent);
+    }
+    .btn-outline:hover { background: rgba(74,158,237,0.08); }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 1.5rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700; margin-bottom: 2.5rem; color: #fff;
+    }
+    .section-title span { color: var(--accent2); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--slate); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-text p strong { color: var(--text); }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--card); border: 1px solid rgba(74,158,237,0.1);
+      border-radius: 12px; padding: 1.2rem 1.4rem; text-align: center;
+    }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--navy); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      bottom: 8px; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    .tl-item { position: relative; margin-bottom: 2.8rem; }
+    .tl-dot {
+      position: absolute; left: -2.45rem; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--navy);
+      box-shadow: 0 0 0 3px rgba(74,158,237,0.25);
+    }
+    .tl-company {
+      font-size: 1.05rem; font-weight: 700; color: #fff;
+    }
+    .tl-role { color: var(--accent2); font-size: .92rem; font-weight: 600; margin-bottom: .2rem; }
+    .tl-date { color: var(--muted); font-size: .8rem; margin-bottom: .6rem; }
+    .tl-desc { color: var(--muted); font-size: .92rem; }
+    .tl-desc li { margin-bottom: .35rem; margin-left: 1.2rem; }
+
+    /* ── CERTS ── */
+    #certifications { background: var(--slate); }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; }
+    .cert-card {
+      background: var(--card); border: 1px solid rgba(74,158,237,0.12);
+      border-radius: 12px; padding: 1.4rem 1.6rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: border-color .2s, transform .15s;
+    }
+    .cert-card:hover { border-color: rgba(74,158,237,0.4); transform: translateY(-3px); }
+    .cert-icon {
+      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(74,158,237,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .cert-name { font-weight: 700; color: #fff; font-size: .95rem; margin-bottom: .15rem; }
+    .cert-body { color: var(--muted); font-size: .82rem; }
+
+    /* ── TECHNOLOGY ── */
+    #technology { background: var(--navy); }
+    .tech-intro { color: var(--muted); max-width: 640px; margin-bottom: 2.5rem; }
+    .tech-intro strong { color: var(--text); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2rem; }
+    .pill {
+      background: rgba(74,158,237,0.1); border: 1px solid rgba(74,158,237,0.22);
+      color: var(--accent); border-radius: 99px; padding: .35rem .95rem;
+      font-size: .85rem; font-weight: 500;
+    }
+    .pill.green {
+      background: rgba(45,212,191,0.1); border-color: rgba(45,212,191,0.22);
+      color: var(--accent2);
+    }
+    .tool-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .tool-card {
+      background: var(--card); border: 1px solid rgba(74,158,237,0.1);
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color .2s;
+    }
+    .tool-card:hover { border-color: rgba(74,158,237,0.35); }
+    .tool-card h4 { color: #fff; font-size: .95rem; margin-bottom: .5rem; }
+    .tool-card p { color: var(--muted); font-size: .85rem; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(135deg, var(--slate) 0%, #0e2236 100%);
+      text-align: center;
+    }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: 1.2rem; color: var(--accent); text-decoration: none;
+      font-weight: 600; margin-bottom: 2rem;
+      transition: color .2s;
+    }
+    .contact-email:hover { color: var(--accent2); }
+    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(74,158,237,0.08);
+      text-align: center; padding: 1.4rem; color: var(--muted); font-size: .82rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Brady Gay</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Civil PE &nbsp;·&nbsp; Construction PM &nbsp;·&nbsp; Technology Developer</div>
+    <h1>Brady Gay</h1>
+    <p class="hero-subtitle">Engineering Infrastructure. Building Technology. Delivering Results.</p>
+    <div class="hero-contact">
+      <a href="mailto:bgay3500@gmail.com">&#9993; bgay3500@gmail.com</a>
+      <a href="tel:+1-000-000-0000">&#9742; Available on request</a>
+      <a href="https://github.com/vladigan" target="_blank" rel="noopener">&#128279; GitHub</a>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn btn-outline">View Experience</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Civil Engineer &amp; <span>Technology Builder</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>licensed Civil PE and PMP-certified Project Manager</strong> with 7+ years of hands-on experience delivering complex utility infrastructure projects for clients like <strong>PG&amp;E</strong> and <strong>SDG&amp;E</strong>.</p>
+        <p>My work spans underground utility construction, overhead line work, streetlight installations, and large-scale infrastructure programs — from estimating and procurement through field execution and closeout.</p>
+        <p>Beyond the field, I <strong>develop technology tools</strong> that bring efficiency to construction workflows — automating reporting, document processing, and project coordination using modern software stacks.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num">7+</div><div class="stat-label">Years in Utility Infrastructure</div></div>
+        <div class="stat-card"><div class="stat-num">PE</div><div class="stat-label">Licensed Civil Engineer</div></div>
+        <div class="stat-card"><div class="stat-num">PMP</div><div class="stat-label">Certified Project Manager</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">OSHA Certifications</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Career <span>Timeline</span></h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">BNG Contracting</div>
+        <div class="tl-role">Project Manager / Civil PE</div>
+        <div class="tl-date">Recent</div>
+        <ul class="tl-desc">
+          <li>Led utility infrastructure projects for PG&amp;E and SDG&amp;E from bid through closeout</li>
+          <li>Managed subcontractors, field crews, and multimillion-dollar project budgets</li>
+          <li>Developed internal technology tools to streamline project reporting and documentation</li>
+          <li>Oversaw underground and overhead utility construction across Northern and Southern California</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Cordoba Corporation</div>
+        <div class="tl-role">Project Manager</div>
+        <div class="tl-date">Prior</div>
+        <ul class="tl-desc">
+          <li>Managed infrastructure programs for public agency clients</li>
+          <li>Coordinated design, permitting, procurement, and construction phases</li>
+          <li>Produced project schedules, cost forecasts, and owner-facing reports</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Empire Erectors</div>
+        <div class="tl-role">Project Engineer / Field Engineer</div>
+        <div class="tl-date">Prior</div>
+        <ul class="tl-desc">
+          <li>Supported structural and civil construction projects in the field</li>
+          <li>Managed RFIs, submittals, and change order documentation</li>
+          <li>Coordinated with design teams and inspectors to maintain schedule and quality</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Accent Stripe</div>
+        <div class="tl-role">Project Engineer</div>
+        <div class="tl-date">Early Career</div>
+        <ul class="tl-desc">
+          <li>Executed pavement marking and traffic control projects</li>
+          <li>Developed estimation and field coordination workflows</li>
+          <li>Built foundational experience in public works and DOT contracting</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications &amp; <span>Licenses</span></h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">&#127981;</div>
+        <div>
+          <div class="cert-name">Professional Engineer (PE)</div>
+          <div class="cert-body">Licensed Civil PE — California. Authorizes engineering design, stamping, and technical oversight on infrastructure projects.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#128203;</div>
+        <div>
+          <div class="cert-name">PMP — Project Management Professional</div>
+          <div class="cert-body">PMI-certified. Demonstrates mastery of project lifecycle, risk, scheduling, and stakeholder management.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#9940;</div>
+        <div>
+          <div class="cert-name">OSHA 30-Hour (Construction)</div>
+          <div class="cert-body">Advanced safety training covering hazard recognition, fall protection, electrical safety, and construction site management.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#128737;</div>
+        <div>
+          <div class="cert-name">OSHA 10-Hour (Construction)</div>
+          <div class="cert-body">Foundational OSHA construction safety certification covering workers' rights and common site hazards.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">&#127891;</div>
+        <div>
+          <div class="cert-name">Engineer in Training (EIT)</div>
+          <div class="cert-body">Passed the Fundamentals of Engineering (FE) exam — first step toward PE licensure, demonstrating core engineering competency.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="section-inner">
+    <p class="section-label">Technology</p>
+    <h2 class="section-title">Tools I <span>Build</span></h2>
+    <p class="tech-intro">
+      Alongside my engineering career, I develop <strong>software tools that solve real construction problems</strong> — automating workflows, processing documents, and extracting intelligence from project data. I build with a pragmatic stack focused on shipping useful things fast.
+    </p>
+    <div class="pill-row">
+      <span class="pill">Python</span>
+      <span class="pill">Flask</span>
+      <span class="pill">Playwright</span>
+      <span class="pill">Claude API</span>
+      <span class="pill">HTML / CSS / JS</span>
+      <span class="pill green">REST APIs</span>
+      <span class="pill green">PDF Automation</span>
+      <span class="pill green">Web Scraping</span>
+      <span class="pill green">AI Integration</span>
+    </div>
+    <div class="tool-cards">
+      <div class="tool-card">
+        <h4>Document Processing Automation</h4>
+        <p>Tools that extract, parse, and transform construction documents — RFIs, submittals, daily reports — into structured data, reducing manual data entry.</p>
+      </div>
+      <div class="tool-card">
+        <h4>AI-Powered Project Tools</h4>
+        <p>Applications built on the Claude API to assist with project correspondence, specification review, and answering questions from contract documents.</p>
+      </div>
+      <div class="tool-card">
+        <h4>Browser Automation</h4>
+        <p>Playwright-based tools to automate interactions with utility client portals (PG&amp;E, SDG&amp;E) — retrieving work orders, submitting reports, and monitoring job status.</p>
+      </div>
+      <div class="tool-card">
+        <h4>Project Reporting Dashboards</h4>
+        <p>Flask web apps that consolidate field data into clean, real-time dashboards for project managers and owners — cutting weekly reporting from hours to minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's <span>Connect</span></h2>
+    <p style="color:var(--muted); margin-bottom:1.8rem; max-width:500px; margin-left:auto; margin-right:auto;">
+      Open to project management opportunities, engineering consulting, and technology collaborations in the construction and utility space.
+    </p>
+    <a href="mailto:bgay3500@gmail.com" class="contact-email">&#9993; bgay3500@gmail.com</a>
+    <div class="contact-links">
+      <a href="mailto:bgay3500@gmail.com" class="btn btn-primary">Send Email</a>
+      <a href="https://github.com/vladigan" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Brady Gay &mdash; Civil PE | PMP | Technology Developer
+</footer>
+
+</body>
+</html>
